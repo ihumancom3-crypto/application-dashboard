@@ -779,41 +779,6 @@ def render_dashboard(
             width="stretch",
         )
 
-    st.subheader("집계표")
-    table_col_1, table_col_2 = st.columns(2)
-    with table_col_1:
-        st.write("명상경험별 집계")
-        st.dataframe(summary["experience_df"], width="stretch", hide_index=True)
-    with table_col_2:
-        st.write("입금 여부별 집계")
-        st.dataframe(summary["payment_df"], width="stretch", hide_index=True)
-
-    st.subheader("그래프")
-    chart_col_1, chart_col_2 = st.columns(2)
-    with chart_col_1:
-        st.bar_chart(summary["experience_df"].set_index("명상경험"))
-    with chart_col_2:
-        st.bar_chart(summary["payment_df"].set_index("입금상태"))
-
-    st.subheader("원본 데이터 미리보기")
-    if column_map["name"]:
-        st.caption("이름이 비어 있는 행은 집계에서 제외됩니다.")
-    st.dataframe(summary["applicant_df"], width="stretch", hide_index=True)
-
-    with st.expander("자동 인식된 열 확인"):
-        st.write(
-            pd.DataFrame(
-                [
-                    ("이름", column_map["name"] or "인식 안 됨"),
-                    ("과정명/차수", column_map["course"] or "인식 안 됨"),
-                    ("입금 여부", column_map["payment"] or "인식 안 됨"),
-                    ("명상경험", column_map["experience"] or "인식 안 됨"),
-                ],
-                columns=["역할", "선택된 열"],
-            )
-        )
-
-
 def _render_sidebar() -> dict[str, str]:
     st.sidebar.header("데이터 설정")
     default_connection_index = 1 if DEFAULT_PUBLIC_SHEET_URLS else 0
