@@ -616,20 +616,63 @@ def render_summary_panel(summary: dict[str, Any]) -> None:
             font-size: 0.9rem;
             color: #4b5563;
         }
-        @media (max-width: 430px) {
+        @media (max-width: 600px) {
+            .summary-board {
+                margin: 0.8rem auto 1.2rem;
+            }
+            .summary-total {
+                padding: 1rem 0.75rem;
+                margin-bottom: 0.55rem;
+            }
+            .summary-total-label {
+                font-size: 0.95rem;
+            }
             .summary-total-value {
-                font-size: 3rem;
+                font-size: 3.15rem;
+            }
+            .summary-total-unit {
+                font-size: 1rem;
+            }
+            .summary-note {
+                font-size: 0.78rem;
+                margin-top: 0.4rem;
             }
             .summary-box.two,
             .summary-box.four {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-bottom: 0.55rem;
             }
             .summary-cell {
+                min-height: 86px;
+                padding: 0.7rem 0.35rem;
+                border-right: 1px solid #e5e7eb;
+                border-bottom: 0;
+            }
+            .summary-box.four .summary-cell:nth-child(2n),
+            .summary-box.two .summary-cell:nth-child(2n) {
                 border-right: 0;
+            }
+            .summary-box.four .summary-cell:nth-child(-n+2) {
                 border-bottom: 1px solid #e5e7eb;
             }
-            .summary-cell:last-child {
-                border-bottom: 0;
+            .summary-label {
+                font-size: 0.86rem;
+                margin-bottom: 0.25rem;
+            }
+            .summary-value {
+                font-size: 1.9rem;
+            }
+            .summary-unit {
+                font-size: 0.82rem;
+            }
+            .summary-box-title {
+                font-size: 0.88rem;
+                margin: 0.25rem 0 0.35rem;
+            }
+            .summary-rules {
+                font-size: 0.76rem;
+                line-height: 1.45;
+                margin-top: 0.55rem;
             }
         }
         </style>
